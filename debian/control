@@ -1,0 +1,57 @@
+Source: xfconf
+Section: xfce
+Priority: optional
+Maintainer:  Filip Danilovic <filip@openmailbox.org> 
+Build-Depends: debhelper (>= 9), libxfce4util-dev (>= 4.12.0), 
+ libdbus-1-dev, libdbus-glib-1-dev, libextutils-pkgconfig-perl, 
+ libextutils-depends-perl, libglib-perl, intltool, dpkg-dev (>= 1.16.1.),
+ libtool, xfce4-dev-tools, gtk-doc-tools
+Standards-Version: 3.9.5
+Homepage: http://www.xfce.org
+Vcs-Svn: svn://anonscm.debian.org/pkg-xfce/desktop/trunk/xfconf
+Vcs-Browser: http://anonscm.debian.org/viewvc/pkg-xfce/desktop/trunk/xfconf/
+
+Package: libxfconf-0-dev
+Section: libdevel
+Architecture: any
+Depends: libxfconf-0-2 (= ${binary:Version}), ${misc:Depends}, libdbus-1-dev,
+ libdbus-glib-1-dev, pkg-config, libglib2.0-dev
+Description: Development files for libxfconf
+ This package contains the development files libxfconf which are 
+ the main part of the Xfce4 configuration system. If you want to 
+ develop applications that use this library, you want 
+ to install this package.
+ .
+ The libxfconf Reference Manual is also included and it can be 
+ consulted with Devhelp or a web browser.
+
+Package: libxfconf-0-2
+Section: libs
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${shlibs:Depends}, ${misc:Depends}, xfconf
+Description: Client library for Xfce4 configure interface
+ This package contains a library which can be used by every
+ program that aims to be a configuration-manager for Xfce4.
+ .
+ If you intend to use Xfce4, you definitely want to install
+ this package.
+
+Package: libxfconf-0-2-dbg
+Section: debug
+Priority: extra
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, libxfconf-0-2 (= ${binary:Version})
+Description: debugging information for libxfconf
+ This package contains debugging symbols for libxfconf, which 
+ provides basic functions for the Xfce4 configuration tool.
+
+Package: xfconf
+Section: xfce
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, dbus-x11
+Recommends: ${shlibs:Recommends}
+Description: utilities for managing settings in Xfce
+ xfconf contains xfconfd and xfconf-query.
+  - xfconfd handles the Xfce settings storage
+  - xfconf-query enables users to tune settings from command line
